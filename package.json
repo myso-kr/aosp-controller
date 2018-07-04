@@ -16,9 +16,6 @@
   },
   "dependencies": {
     "adbkit": "^2.11.0",
-    "adbkit-evilscan": "git+https://github.com/myso-kr/adbkit-evilscan.git",
-    "adbkit-network-manager": "git+https://github.com/myso-kr/adbkit-network-manager.git",
-    "adbkit-puppeteer": "git+https://github.com/myso-kr/adbkit-puppeteer.git",
     "bluebird": "^3.5.1",
     "chrome-remote-interface": "^0.25.6",
     "command-line-args": "^5.0.2",
