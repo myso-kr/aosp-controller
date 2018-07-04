@@ -271,10 +271,10 @@ export default async function ControllerDevice(adb, serial, rooted) {
           console.info(`keyword: ${k.keyword}`);
           if (action % 3 === 0) {
             await chromeDeviceEmulationInput('#query, #nx_query', { text: `${k.keyword}\r\n` });
-          }
+          }else
           if (action % 3 === 1) {
             await chromeDeviceEmulationTouch('.thumb_fix, .btn_next', { random: true });
-          }
+          }else
           if (action % 3 === 2) {
             await Promise.mapSeries(_.range(_.random(10, 30)), () => chromeDeviceEmulationSwipe({ direction: 'd' }));
             await chromeDeviceEmulationGoBack();
