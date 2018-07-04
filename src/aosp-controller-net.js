@@ -71,44 +71,7 @@ export default async function ControllerNET(adb, serial) {
     await adb.networkCellular(serial, { state: true });
     await ControllerDevice(adb, serial, rooted);
   })
-  .timeout(1000 * 60 * 3)
+  .timeout(1000 * 60 * 5)
   .then(() => ControllerNET(adb, serial))
   .catch((e) => console.error(e))
-  // const subnet = IP.subnet(network.address, '255.255.255.0');
-  // const gateway = subnet.firstAddress.replace(/\d+$/, 101);
-  
-  // const devicesList = await adb.listDevices();
-  // const devices = await Promise.filter(devicesList, (device) => subnet.contains(device.id.replace(':5555', '')));
-
-  // if(devices.length === 0) return Promise.delay(10000).then(()=>handlerNET(network));
-  // logger.info(`NET:${network.address} handling...`);
-
-  // return Promise.resolve()
-  // .then(() => hasSSH(gateway))
-  // .then((has) => {
-  //   if(!has) {
-  //     logger.info(`${gateway} is cannot ssh connect!`);
-  //   } else {
-  //     logger.info(`${gateway} is can ssh connect!`);
-  //     return Promise.resolve()
-  //     .then(() => ssh(gateway, '/root/reset.sh').timeout(60000))
-  //     .then(() => ssh(gateway, 'curl http://checkip.amazonaws.com').timeout(30000))
-  //     .then((externalIP) => {
-  //       if(!externalIP) {
-  //         throw new Error('not resolve external IP');
-  //       } else {
-  //         logger.info(`${network.address} <-> ${externalIP}`)
-  //         return Promise.map(devices, async (device) => {
-  //           //await adb.waitForDevice(device.id);
-  //           await handlerDevice(device, devicesList);
-  //         });
-  //       }
-  //     })
-  //   }
-  // })
-  // .catch(async (e) => {
-  //   logger.error(`${gateway} is error: ${e.message || e} - ${ e.stack }`);
-  //   await ssh(gateway, 'reboot').delay(60000)
-  // })
-  // .finally(() => handlerNET(network)) 
 }
