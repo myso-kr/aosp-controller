@@ -286,7 +286,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
             break;
             case 2:
               await Promise.mapSeries(_.range(_.random(10, 30)), () => chromeDeviceEmulationSwipe({ direction: 'd' }));
-              await chromeDeviceEmulationGoBack({ match: /search\.naver\.com/ig });
+              await chromeDeviceEmulationGoBack();
             break;
           }
         } catch(e) {
