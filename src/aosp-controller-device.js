@@ -265,10 +265,9 @@ export default async function ControllerDevice(adb, serial, rooted) {
         try {
           await Promise.delay(3000);
           const offset = Math.floor(action / 3);
-          console.info(`keyword offset: ${offset}`);
+          console.info(`keyword offset: ${action}/${offset}`);
+          if(ks.length <= offset) return resolve();
           const k = _.nth(ks, offset);
-          console.info(`${k}`);
-          if (!k) return resolve();
           console.info(`keyword: ${k.keyword}`);
           if (action % 3 === 0) {
             await chromeDeviceEmulationInput('#query, #nx_query', { text: `${k.keyword}\r\n` });
@@ -291,8 +290,6 @@ export default async function ControllerDevice(adb, serial, rooted) {
   } finally {
     chrome.close();
   }
-  
-  await Promise.delay(3000);
 }
 
 export async function ControllerDeviceChrome(adb, serial, rooted) {

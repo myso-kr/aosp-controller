@@ -19,8 +19,9 @@ export default async function ControllerNET(adb, serial) {
     await adb.networkCellular(serial, { state: true });
     await ControllerDevice(adb, serial, rooted);
   })
-  .catch((e)=>console.error(e))
-  .finally(() => ControllerNET(adb, serial))
+  .timeout(1000 * 60 * 3)
+  .then(() => ControllerNET(adb, serial))
+  .catch((e) => console.error(e))
   // const subnet = IP.subnet(network.address, '255.255.255.0');
   // const gateway = subnet.firstAddress.replace(/\d+$/, 101);
   
