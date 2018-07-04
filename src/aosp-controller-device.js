@@ -81,6 +81,14 @@ export default async function ControllerDevice(adb, serial, rooted) {
       }
     `);
     await Page.addScriptToEvaluateOnNewDocument({ source: overrides.join(';\n') });
+    await Page.javascriptDialogOpening(async ({message, type}) => {
+        try {
+            await Page.handleJavaScriptDialog({accept: true});
+            console.info(`${serial} > ${type}: ${message} -> accepted!`);
+        } catch (err) {
+            console.error(err);
+        }
+    });
   }
   const chromeDeviceEmulationSwipe = async (options = {}) => {
     const metrics = await Page.getLayoutMetrics();
