@@ -2,8 +2,29 @@ import _ from 'lodash';
 import Promise from 'bluebird';
 
 import IP from 'ip';
+import NetScanner from 'evilscan';
+const NetScannerPromise = ((options) => {
+  return new Promise((resolve, reject) => {
+    const result = [];
+    const scanner = new NetScanner(options);
+    scanner.on('error', reject);
+    scanner.on('result', (data) => result.push(data));
+    scanner.on('done', () => resolve(result));
+    scanner.run();
+  });
+});
+import SSH from 'ssh2';
 
 import ControllerDevice from './aosp-controller-device';
+
+async function hasSSH(address) {
+  const ports = await NetScannerPromise({ target: address, port: '22', status: 'O' });
+  return !!_.filter(ports, { status: 'open' }).length;
+}
+
+async function ssh(address, command) {
+
+}
 
 export default async function ControllerNET(adb, serial) {
   const isNET = serial.indexOf(':5555') != -1;
@@ -11,6 +32,10 @@ export default async function ControllerNET(adb, serial) {
 
   console.info(`NET handling...`);
   return Promise.resolve()
+  .then(async () => {
+    const subnet = IP.subnet(serial.replace(':5555', ''), '255.255.255.0');
+    console.info(subnet);
+  })
   .then(async () => {
     console.info(`Loop Controller NET by ${serial}`);
     const rooted = (await adb.shellWait(serial, `su -c 'echo 1' root`)).toString().trim() == '1';

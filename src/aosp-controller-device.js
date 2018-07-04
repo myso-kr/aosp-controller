@@ -195,8 +195,8 @@ export default async function ControllerDevice(adb, serial, rooted) {
         await Input.dispatchTouchEvent({ type: 'touchStart', touchPoints: [{x: dx, y: dy}] });
         await Input.dispatchTouchEvent({ type: 'touchMove', touchPoints: [{x: dx, y: dy}] });
         await Input.dispatchTouchEvent({ type: 'touchEnd', touchPoints: [] });
+        await Promise.delay(1000);
     }
-    await Promise.delay(1000);
   }
   const chromeDeviceEmulationInput = async (selector, options = {}) => {
     let isComposing = false;
