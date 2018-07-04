@@ -247,7 +247,6 @@ export default async function ControllerDevice(adb, serial, rooted) {
   }
 
   try {
-    let action = 0;
     const keywords = _.uniqBy(KEYWORDS_INTEREST, 'keyword');
     const ks = [];
     ks.push(_.sample(_.filter(keywords, (k) => !_.includes(ks, k))));
@@ -261,6 +260,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
     await chromeDeviceEmulation();
     await Page.navigate({url: 'http://m.naver.com'});
     await new Promise((resolve, reject) => {
+      let action = 0;
       Page.loadEventFired(async () => {
         try {
           await Promise.delay(3000);
