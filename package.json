@@ -1,0 +1,36 @@
+{
+  "name": "aosp-controller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx babel src --out-dir lib",
+    "start": "npm run-script build && babel-node index.js",
+    "test": "npm run-script build && babel-node test/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "dependencies": {
+    "adbkit": "^2.11.0",
+    "adbkit-evilscan": "git+https://github.com/myso-kr/adbkit-evilscan.git",
+    "adbkit-network-manager": "git+https://github.com/myso-kr/adbkit-network-manager.git",
+    "adbkit-puppeteer": "git+https://github.com/myso-kr/adbkit-puppeteer.git",
+    "bluebird": "^3.5.1",
+    "chrome-remote-interface": "^0.25.6",
+    "command-line-args": "^5.0.2",
+    "easing": "^1.1.2",
+    "evilscan": "^1.6.1",
+    "hangul-js": "^0.2.4",
+    "ip": "^1.1.5",
+    "lodash": "^4.17.10",
+    "lowdb": "^1.0.0",
+    "puppeteer": "^1.4.0",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "ssh2": "^0.6.1"
+  }
+}
