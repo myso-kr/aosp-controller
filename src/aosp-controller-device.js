@@ -252,7 +252,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
   }
   const chromeDeviceEmulationGoBack = async (options = { offset: 1 }) => {
     const history = await Page.getNavigationHistory();
-    const offset = (options.match) ? _.findLastIndex(history.entries, (entry)=>(console.info(entry.url), options.match.test(entry.url))) : (history.currentIndex - options.offset);
+    const offset = (options.match) ? _.findLastIndex(history.entries, (entry)=>(console.info(`${serial} > ${entry.url}`), options.match.test(entry.url))) : (history.currentIndex - options.offset);
     await Page.navigateToHistoryEntry({ entryId: _.nth(history.entries, offset).id });
   }
 
