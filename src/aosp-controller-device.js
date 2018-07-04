@@ -120,9 +120,14 @@ export default async function ControllerDevice(adb, serial, rooted) {
     }
   }
   const chromeDeviceEmulationTouch = async (selector, options = {}) => {
-    const document = await DOM.getDocument();
-    const elements = await DOM.querySelectorAll({ nodeId: document.root.nodeId, selector: selector });
-    return chromeDeviceEmulationTouchElement({ nodeId: (options.random) ? _.sample(elements.nodeIds) : _.nth(elements.nodeIds, 0) }, options);
+    try {
+      const document = await DOM.getDocument();
+      const elements = await DOM.querySelectorAll({ nodeId: document.root.nodeId, selector: selector });
+      return chromeDeviceEmulationTouchElement({ nodeId: (options.random) ? _.sample(elements.nodeIds) : _.nth(elements.nodeIds, 0) }, options);
+    } catch(e) {
+      if(options.random) return chromeDeviceEmulationTouch(selector, options);
+      throw e;
+    }
   }
   const chromeDeviceEmulationTouchElement = async (element, options = {}) => {
     const metrics = await Page.getLayoutMetrics();
