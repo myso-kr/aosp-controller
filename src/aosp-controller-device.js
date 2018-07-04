@@ -147,12 +147,12 @@ export default async function ControllerDevice(adb, serial, rooted) {
 
     const cx = metrics.layoutViewport.clientWidth / 2;
     const cy = metrics.layoutViewport.clientHeight / 2;
-    const mx = cx / 3;
-    const my = cy / 3;
+    const mx = cx / 4;
+    const my = cy / 4;
 
-    const boundingT = bounding.top >= cy - (bh / 2);
+    const boundingT = bounding.top >= 0;
     const boundingL = bounding.left >= 0;
-    const boundingB = bounding.bottom <= cy + (bh / 2);
+    const boundingB = bounding.bottom <= metrics.layoutViewport.clientHeight;
     const boundingR = bounding.right <= metrics.layoutViewport.clientWidth;
     
     switch(true) {
