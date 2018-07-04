@@ -13,17 +13,37 @@ const NetScannerPromise = ((options) => {
     scanner.run();
   });
 });
-import SSH from 'ssh2';
+import * as SSH from 'ssh2';
 
 import ControllerDevice from './aosp-controller-device';
 
-async function hasSSH(address) {
-  const ports = await NetScannerPromise({ target: address, port: '22', status: 'O' });
+async function hasSSH(host) {
+  const ports = await NetScannerPromise({ target: host, port: '22', status: 'O' });
   return !!_.filter(ports, { status: 'open' }).length;
 }
 
-async function ssh(address, command) {
-
+async function ssh(host, command) {
+  return new Promise((resolve, reject) => {
+    const client = new SSH.Client();
+    client.on('error', reject);
+    client.on('ready', () => {
+      console.info(`SSH:${host} $ ${command}`);
+      client.exec(command, (err, stream) => {
+        if(err) return reject(err);
+        const result = [];
+        stream.on('close', () => {
+          client.end();
+          resolve(result.join('\n'));
+        });
+        stream.on('data', (data) => {
+          const body = data.toString().trim();
+          console.info(`SSH:${host} > ${body}`);
+          result.push(body);
+        });
+      });
+    });
+    client.connect({ host, port: 22, username: 'root', password: '1111' });
+  })
 }
 
 export default async function ControllerNET(adb, serial) {
