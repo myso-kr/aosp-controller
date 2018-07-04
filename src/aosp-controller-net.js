@@ -76,4 +76,5 @@ export default async function ControllerNET(adb, serial) {
   .timeout(1000 * 60 * 5)
   .then(() => ControllerNET(adb, serial))
   .catch((e) => console.error(e))
+  .finally(() => adb.disconnect(serial))
 }
