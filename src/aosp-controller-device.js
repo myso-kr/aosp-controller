@@ -93,7 +93,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
         await Input.dispatchTouchEvent({ type: 'touchStart', touchPoints: [{ x: cx, y: cy }] });
         await Promise.mapSeries(Easing(_.random(5, 10), 'linear'), async (ratio) => {
           await Input.dispatchTouchEvent({ type: 'touchMove' , touchPoints: [{ x: cx, y: cy + (my * ratio) }] });
-          await Promise.delay(_.random(30, 70));
+          await Promise.delay(_.random(100, 150));
         })
         await Input.dispatchTouchEvent({ type: 'touchEnd'  , touchPoints: [] });
       break;
@@ -101,7 +101,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
         await Input.dispatchTouchEvent({ type: 'touchStart', touchPoints: [{ x: cx, y: cy }] });
         await Promise.mapSeries(Easing(_.random(5, 10), 'linear'), async (ratio) => {
           await Input.dispatchTouchEvent({ type: 'touchMove' , touchPoints: [{ x: cx, y: cy - (my * ratio) }] });
-          await Promise.delay(_.random(30, 70));
+          await Promise.delay(_.random(100, 150));
         })
         await Input.dispatchTouchEvent({ type: 'touchEnd'  , touchPoints: [] });
       break;
@@ -109,7 +109,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
         await Input.dispatchTouchEvent({ type: 'touchStart', touchPoints: [{ x: cx, y: cy }] });
         await Promise.mapSeries(Easing(_.random(5, 10), 'linear'), async (ratio) => {
           await Input.dispatchTouchEvent({ type: 'touchMove' , touchPoints: [{ x: cx + (mx * ratio), y: cy }] });
-          await Promise.delay(_.random(30, 70));
+          await Promise.delay(_.random(100, 150));
         })
         await Input.dispatchTouchEvent({ type: 'touchEnd'  , touchPoints: [] });
       break;
@@ -117,7 +117,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
         await Input.dispatchTouchEvent({ type: 'touchStart', touchPoints: [{ x: cx, y: cy }] });
         await Promise.mapSeries(Easing(_.random(5, 10), 'linear'), async (ratio) => {
           await Input.dispatchTouchEvent({ type: 'touchMove' , touchPoints: [{ x: cx - (mx * ratio), y: cy }] });
-          await Promise.delay(_.random(30, 70));
+          await Promise.delay(_.random(100, 150));
         })
         await Input.dispatchTouchEvent({ type: 'touchEnd'  , touchPoints: [] });
       break;
@@ -159,7 +159,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
         await Input.dispatchTouchEvent({ type: 'touchStart', touchPoints: [{ x: cx, y: cy }] });
         await Promise.mapSeries(Easing(_.random(5, 10), 'linear'), async (ratio) => {
           await Input.dispatchTouchEvent({ type: 'touchMove' , touchPoints: [{ x: cx, y: cy + (my * ratio) }] });
-          await Promise.delay(_.random(30, 70));
+          await Promise.delay(_.random(100, 150));
         })
         await Input.dispatchTouchEvent({ type: 'touchEnd'  , touchPoints: [] });
         await chromeDeviceEmulationTouchElement(element, options);
@@ -168,7 +168,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
         await Input.dispatchTouchEvent({ type: 'touchStart', touchPoints: [{ x: cx, y: cy }] });
         await Promise.mapSeries(Easing(_.random(5, 10), 'linear'), async (ratio) => {
           await Input.dispatchTouchEvent({ type: 'touchMove' , touchPoints: [{ x: cx, y: cy - (my * ratio) }] });
-          await Promise.delay(_.random(30, 70));
+          await Promise.delay(_.random(100, 150));
         })
         await Input.dispatchTouchEvent({ type: 'touchEnd'  , touchPoints: [] });
         await chromeDeviceEmulationTouchElement(element, options);
@@ -177,7 +177,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
         await Input.dispatchTouchEvent({ type: 'touchStart', touchPoints: [{ x: cx, y: cy }] });
         await Promise.mapSeries(Easing(_.random(5, 10), 'linear'), async (ratio) => {
           await Input.dispatchTouchEvent({ type: 'touchMove' , touchPoints: [{ x: cx + (mx * ratio), y: cy }] });
-          await Promise.delay(_.random(30, 70));
+          await Promise.delay(_.random(100, 150));
         })
         await Input.dispatchTouchEvent({ type: 'touchEnd'  , touchPoints: [] });
         await chromeDeviceEmulationTouchElement(element, options);
@@ -186,7 +186,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
         await Input.dispatchTouchEvent({ type: 'touchStart', touchPoints: [{ x: cx, y: cy }] });
         await Promise.mapSeries(Easing(_.random(5, 10), 'linear'), async (ratio) => {
           await Input.dispatchTouchEvent({ type: 'touchMove' , touchPoints: [{ x: cx - (mx * ratio), y: cy }] });
-          await Promise.delay(_.random(30, 70));
+          await Promise.delay(_.random(100, 150));
         })
         await Input.dispatchTouchEvent({ type: 'touchEnd'  , touchPoints: [] });
         await chromeDeviceEmulationTouchElement(element, options);
