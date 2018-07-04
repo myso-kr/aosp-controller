@@ -34,10 +34,17 @@ export default async function ControllerNET(adb, serial) {
   return Promise.resolve()
   .then(async () => {
     const subnet = IP.subnet(serial.replace(':5555', ''), '255.255.255.0');
-    console.info(subnet);
+    const gateway = subnet.firstAddress.replace(/\d+$/, 2);
+    const resetIP = async () => {
+      await ssh(gateway, '/root/reset.sh').timeout(60000);
+      const externalIP = await ssh(gateway, 'curl http://checkip.amazonaws.com').timeout(30000);
+      if(!externalIP) return resetIP();
+      return externalIP;
+    }
+    if(await hasSSH(gateway)) return resetIP();
   })
-  .then(async () => {
-    console.info(`Loop Controller NET by ${serial}`);
+  .then(async (externalIP) => {
+    console.info(`Loop Controller NET by ${serial} (${externalIP})`);
     const rooted = (await adb.shellWait(serial, `su -c 'echo 1' root`)).toString().trim() == '1';
     await adb.networkWiFi(serial, { state: false });
     await adb.networkCellular(serial, { state: false });
