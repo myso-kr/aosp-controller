@@ -85,7 +85,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
     const mx = cx / 3;
     const my = cy / 3;
     switch(options.direction.toLowerCase()) {
-      case 'd': case 'down':
+      case 'u': case 'up':
         await Input.dispatchTouchEvent({ type: 'touchStart', touchPoints: [{ x: cx, y: cy }] });
         await Promise.mapSeries(Easing(_.random(10, 20), 'linear'), async (ratio) => {
           await Input.dispatchTouchEvent({ type: 'touchMove' , touchPoints: [{ x: cx, y: cy + (my * ratio) }] });
@@ -93,7 +93,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
         })
         await Input.dispatchTouchEvent({ type: 'touchEnd'  , touchPoints: [] });
       break;
-      case 'u': case 'up':
+      case 'd': case 'down':
         await Input.dispatchTouchEvent({ type: 'touchStart', touchPoints: [{ x: cx, y: cy }] });
         await Promise.mapSeries(Easing(_.random(10, 20), 'linear'), async (ratio) => {
           await Input.dispatchTouchEvent({ type: 'touchMove' , touchPoints: [{ x: cx, y: cy - (my * ratio) }] });
