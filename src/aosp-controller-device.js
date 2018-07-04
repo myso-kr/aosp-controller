@@ -276,7 +276,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
             await chromeDeviceEmulationTouch('.total_wrap a.total_tit', { random: true });
           }
           if (action % 3 === 2) {
-            await Promise.mapSeries(_.range(_.random(10, 30)), () => chromeDeviceEmulationSwipe('d'));
+            await Promise.mapSeries(_.range(_.random(10, 30)), () => chromeDeviceEmulationSwipe({ direction: 'd' }));
             await chromeDeviceEmulationGoBack();
           }
           action++;
