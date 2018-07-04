@@ -17,6 +17,7 @@
 .nfs*
 
 ### Node ###
+package-lock.json
 # Logs
 logs
 *.log
