@@ -21,19 +21,19 @@ class ChromeRemoteInterface {
         reset: true,
         args: [],
         async onReset() {
-          console.info(serial, `chrome_reset`);
+          console.info(`${serial} > chrome_reset`);
         },
         async onPreload() {
-          console.info(serial, `chrome_preload`);
+          console.info(`${serial} > chrome_preload`);
         },
         async onLoad() {
-          console.info(serial, `chrome_load`);
+          console.info(`${serial} > chrome_load`);
         },
         async onConnect() {
-          console.info(serial, `chrome_connect`);
+          console.info(`${serial} > chrome_connect`);
         },
         async onDisconnect() {
-          console.info(serial, `chrome_disconnect`);
+          console.info(`${serial} > chrome_disconnect`);
         }
       },
     };
