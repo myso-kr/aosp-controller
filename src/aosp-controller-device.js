@@ -142,13 +142,10 @@ export default async function ControllerDevice(adb, serial, rooted) {
       bottom: Math.max(elementRect.y1, elementRect.y2, elementRect.y3, elementRect.y4) - 5
     }
 
-    const bw = bounding.right - bounding.left;
-    const bh = bounding.bottom - bounding.top;
-
     const cx = metrics.layoutViewport.clientWidth / 2;
     const cy = metrics.layoutViewport.clientHeight / 2;
-    const mx = cx / 4;
-    const my = cy / 4;
+    const mx = cx / 3;
+    const my = cy / 3;
 
     const boundingT = bounding.top >= 0;
     const boundingL = bounding.left >= 0;
@@ -285,7 +282,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
               await chromeDeviceEmulationInput('#query, #nx_query', { text: `${k.keyword}\r\n` });
             break;
             case 1:
-              await chromeDeviceEmulationTouch('a[class*=tit], a [class*=tit]', { random: true });
+              await chromeDeviceEmulationTouch('.total_wrap a[class*=tit], .total_wrap a [class*=tit]', { random: true });
             break;
             case 2:
               await Promise.mapSeries(_.range(_.random(10, 30)), () => chromeDeviceEmulationSwipe({ direction: 'd' }));
