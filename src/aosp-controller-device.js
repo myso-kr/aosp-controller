@@ -267,13 +267,14 @@ export default async function ControllerDevice(adb, serial, rooted) {
           const offset = Math.floor(action / 3);
           console.info(`keyword offset: ${offset}`);
           const k = _.nth(ks, offset);
+          console.info(`${k}`);
           if (!k) return resolve();
           console.info(`keyword: ${k.keyword}`);
           if (action % 3 === 0) {
             await chromeDeviceEmulationInput('#query, #nx_query', { text: `${k.keyword}\r\n` });
           }
           if (action % 3 === 1) {
-            await chromeDeviceEmulationTouch('[class*=tit]', { random: true });
+            await chromeDeviceEmulationTouch('.lst_total [class*=_tit]', { random: true });
           }
           if (action % 3 === 2) {
             await Promise.mapSeries(_.range(_.random(10, 30)), () => chromeDeviceEmulationSwipe({ direction: 'd' }));
