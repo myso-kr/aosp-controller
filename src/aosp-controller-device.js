@@ -243,7 +243,8 @@ export default async function ControllerDevice(adb, serial, rooted) {
   }
   const chromeDeviceEmulationGoBack = async (options = { offset: 1 }) => {
     const history = await Page.getNavigationHistory();
-    await Page.navigateToHistoryEntry({ entryId: _.nth(history.entries, history.currentIndex - options.offset).id });
+    const offset = (options.match) ? _.findLastIndex(history.entries, (entry)=>options.match.test(entry.url)) : (history.currentIndex - options.offset);
+    await Page.navigateToHistoryEntry({ entryId: _.nth(history.entries, offset).id });
   }
 
   try {
@@ -274,11 +275,11 @@ export default async function ControllerDevice(adb, serial, rooted) {
               await chromeDeviceEmulationInput('#query, #nx_query', { text: `${k.keyword}\r\n` });
             break;
             case 1:
-              await chromeDeviceEmulationTouch('.thumb_fix, .btn_next, [class*=_tit]', { random: true });
+              await chromeDeviceEmulationTouch('section a', { random: true });
             break;
             case 2:
               await Promise.mapSeries(_.range(_.random(10, 30)), () => chromeDeviceEmulationSwipe({ direction: 'd' }));
-              await chromeDeviceEmulationGoBack();
+              await chromeDeviceEmulationGoBack({ match: /search\.naver\.com/ig });
             break;
           }
         } catch(e) {
