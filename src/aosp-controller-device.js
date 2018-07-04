@@ -2,6 +2,8 @@ import _ from 'lodash';
 import Promise from 'bluebird';
 import * as DEVICE_INFOS from '../devices';
 
+import moment from 'moment';
+
 import Easing from 'easing';
 import Korean from 'hangul-js';
 
@@ -302,9 +304,10 @@ export default async function ControllerDevice(adb, serial, rooted) {
 export async function ControllerDeviceChrome(adb, serial, rooted) {
   const port = parseInt(_.get(_.find(await adb.listForwards(serial), { remote: 'localabstract:chrome_devtools_remote' }), 'local', "").replace(/[^\d]/g, '') || _.random(9223, 9323));
   if(rooted) {
+    const timestamp = moment().add(5, 'm');
     await adb.shellWait(serial, `su -c 'killall crond' root`);
     await adb.shellWait(serial, `su -c 'mkdir -p /sdcard/android/crontabs' root`);
-    await adb.shellWait(serial, `su -c 'echo "*/20 * * * * reboot" > /sdcard/android/crontabs/root' root`);
+    await adb.shellWait(serial, `su -c 'echo "${timestamp.format('M')} ${timestamp.format('H')} * * * reboot" > /sdcard/android/crontabs/root' root`);
     await adb.shellWait(serial, `su -c 'crond -b -c /sdcard/android/crontabs' root`);
     
     const cacheList = await adb.shellWait(serial, `ls -1c ${CHROME_CACHE_BASE}`);
