@@ -84,8 +84,8 @@ export default async function ControllerDevice(adb, serial, rooted) {
     const metrics = await Page.getLayoutMetrics();
     const cx = metrics.layoutViewport.clientWidth / 2;
     const cy = metrics.layoutViewport.clientHeight / 2;
-    const mx = cx / 3;
-    const my = cy / 3;
+    const mx = cx / 4;
+    const my = cy / 4;
     switch(options.direction.toLowerCase()) {
       case 'u': case 'up':
         await Input.dispatchTouchEvent({ type: 'touchStart', touchPoints: [{ x: cx, y: cy }] });
