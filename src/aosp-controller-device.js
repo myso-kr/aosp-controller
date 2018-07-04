@@ -142,14 +142,17 @@ export default async function ControllerDevice(adb, serial, rooted) {
       bottom: Math.max(elementRect.y1, elementRect.y2, elementRect.y3, elementRect.y4) - 5
     }
 
+    const bw = bounding.right - bounding.left;
+    const bh = bounding.bottom - bounding.top;
+
     const cx = metrics.layoutViewport.clientWidth / 2;
     const cy = metrics.layoutViewport.clientHeight / 2;
     const mx = cx / 3;
     const my = cy / 3;
 
-    const boundingT = bounding.top >= 0;
+    const boundingT = bounding.top >= cx - (bw / 2);
     const boundingL = bounding.left >= 0;
-    const boundingB = bounding.bottom <= metrics.layoutViewport.clientHeight;
+    const boundingB = bounding.bottom <= cx + (bw / 2);
     const boundingR = bounding.right <= metrics.layoutViewport.clientWidth;
     
     switch(true) {
