@@ -281,7 +281,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
           }
           action++;
         }catch(e) {
-          reject(3);
+          reject(e);
         }
       });
     })
