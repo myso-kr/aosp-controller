@@ -274,7 +274,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
             await chromeDeviceEmulationInput('#query, #nx_query', { text: `${k.keyword}\r\n` });
           }
           if (action % 3 === 1) {
-            await chromeDeviceEmulationTouch('.lst_total [class*=_tit]', { random: true });
+            await chromeDeviceEmulationTouch('a[href*="blog.naver.com"] [class*=_tit]', { random: true });
           }
           if (action % 3 === 2) {
             await Promise.mapSeries(_.range(_.random(10, 30)), () => chromeDeviceEmulationSwipe({ direction: 'd' }));
