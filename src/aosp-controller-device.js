@@ -136,10 +136,10 @@ export default async function ControllerDevice(adb, serial, rooted) {
     const elementBox = await DOM.getBoxModel(element);
     const elementRect = _.zipObject(['x1', 'y1', 'x2', 'y2', 'x3', 'y3', 'x4', 'y4'], _.get(elementBox, 'model.content'));
     const bounding = {
-      left: Math.min(elementRect.x1, elementRect.x2, elementRect.x3, elementRect.x4) + 1,
-      right: Math.max(elementRect.x1, elementRect.x2, elementRect.x3, elementRect.x4) - 1,
-      top: Math.min(elementRect.y1, elementRect.y2, elementRect.y3, elementRect.y4) + 1,
-      bottom: Math.max(elementRect.y1, elementRect.y2, elementRect.y3, elementRect.y4) - 1
+      left: Math.min(elementRect.x1, elementRect.x2, elementRect.x3, elementRect.x4) + 5,
+      right: Math.max(elementRect.x1, elementRect.x2, elementRect.x3, elementRect.x4) - 5,
+      top: Math.min(elementRect.y1, elementRect.y2, elementRect.y3, elementRect.y4) + 5,
+      bottom: Math.max(elementRect.y1, elementRect.y2, elementRect.y3, elementRect.y4) - 5
     }
 
     const cx = metrics.layoutViewport.clientWidth / 2;
