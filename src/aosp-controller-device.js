@@ -15,7 +15,7 @@ const CHROME_CACHE_APPS = '/data/data/com.android.chrome/app_chrome';
 const CHROME_CACHE_TABS = '/data/data/com.android.chrome/app_tabs';
 
 
-// const KEYWORDS_TARGET   = require('../target.json');
+const KEYWORDS_TARGET   = require('../target.json');
 const KEYWORDS_INTEREST = require('../interest.json');
 
 export default async function ControllerDevice(adb, serial, rooted) {
@@ -265,7 +265,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
   }
 
   try {
-    const keywords = _.uniqBy(KEYWORDS_INTEREST, 'keyword');
+    const keywords = _.uniqBy(KEYWORDS_TARGET, 'keyword');
     const ks = [];
     ks.push(_.sample(_.filter(keywords, (k) => !_.includes(ks, k))));
     ks.push(_.sample(_.filter(keywords, (k) => !_.includes(ks, k))));
