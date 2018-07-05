@@ -9,7 +9,7 @@ import moment from 'moment';
 import Easing from 'easing';
 import Korean from 'hangul-js';
 
-const CHROME_CACHE_SIZE = 600;
+const CHROME_CACHE_SIZE = 300;
 const CHROME_CACHE_BASE = '/data/local/chrome-cache/';
 const CHROME_CACHE_APPS = '/data/data/com.android.chrome/app_chrome';
 const CHROME_CACHE_TABS = '/data/data/com.android.chrome/app_tabs';
