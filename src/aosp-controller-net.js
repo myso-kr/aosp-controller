@@ -66,7 +66,7 @@ export default async function ControllerNET(adb, serial) {
       }
       if(await hasSSH(gateway)) return resetIP();
     } catch(e) {
-      
+      throw e;
     }
   })
   .then(async (externalIP) => {
