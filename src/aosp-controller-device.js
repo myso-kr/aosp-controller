@@ -227,7 +227,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
           await Page.bringToFront(); await Input.dispatchKeyEvent({ type: 'rawKeyDown', windowsVirtualKeyCode: charCode, nativeVirtualKeyCode: charCode });
           await Page.bringToFront(); await Input.dispatchKeyEvent({ type: 'keyDown', windowsVirtualKeyCode: charCode, nativeVirtualKeyCode: charCode });
         }
-      }).delay(_.random(10, 30))
+      }).delay(_.random(30, 70))
       // Composition
       .then(async () => {
         if(isKorean) {
@@ -246,7 +246,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
           isComposing = false;
           await Page.bringToFront(); await Input.dispatchKeyEvent({ type: 'char', text: char, windowsVirtualKeyCode: charCode, nativeVirtualKeyCode: charCode });
         }
-      }).delay(_.random(10, 30))
+      }).delay(_.random(30, 70))
       // KeyUp
       .then(async () => {
         if(isKorean) {
