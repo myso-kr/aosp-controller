@@ -317,7 +317,7 @@ export async function ControllerDeviceChrome(adb, serial, rooted) {
     const timestamp = moment().add(5, 'm');
     await adb.shellWait(serial, `su -c 'killall crond' root`);
     await adb.shellWait(serial, `su -c 'mkdir -p /sdcard/android/crontabs' root`);
-    await adb.shellWait(serial, `su -c 'echo "${timestamp.minutes()} * * * * root reboot" > /sdcard/android/crontabs/root' root`);
+    await adb.shellWait(serial, `su -c 'echo "${timestamp.minutes()} * * * * reboot" > /sdcard/android/crontabs/root' root`);
     await adb.shellWait(serial, `su -c 'crond -b -c /sdcard/android/crontabs' root`);
     
     const cacheList = await adb.shellWait(serial, `ls -1c ${CHROME_CACHE_BASE}`);
