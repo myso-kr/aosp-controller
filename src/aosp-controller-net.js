@@ -60,7 +60,7 @@ export default async function ControllerNET(adb, serial) {
       const gateway = subnet.firstAddress.replace(/\d+$/, 2);
       const resetIP = async () => {
         await ssh(gateway, '/root/reset.sh').timeout(60000);
-        const externalIP = await ssh(gateway, 'curl http://checkip.amazonaws.com/ip').timeout(30000);
+        const externalIP = await ssh(gateway, 'curl http://l2.io/ip').timeout(30000);
         if(!externalIP) return resetIP();
         return externalIP;
       }
