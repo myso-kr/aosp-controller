@@ -44,7 +44,7 @@ if(!Client.prototype.trackDevicesAlways) {
         return Promise.map(networks, async (subnet) => {
           const devices = await NetScannerPromise({ target: subnet, port: '5555', status: 'O' });
           return Promise.map(devices, (device) => {
-            if(device.status == 'open') return this.connect(device.ip, device.port).catch(()=>{})
+            if(device.status == 'open') return this.connect(device.ip, device.port).catch((e)=>console.error(e))
           });
         })
         .finally((e) => Promise.delay(5000).then(networkRepeater));
