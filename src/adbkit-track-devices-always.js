@@ -19,7 +19,7 @@ const NetScannerPromise = ((options) => {
 });
 
 import Client from 'adbkit/lib/adb/client';
-// if(!Client.prototype.trackDevicesAlways) {
+if(!Client.prototype.trackDevicesAlways) {
   Client.prototype.trackDevicesAlways = function(callback) {
     return Promise.resolve().then(async () => {
       const trackerAlways = new EventEmitter();
@@ -43,10 +43,13 @@ import Client from 'adbkit/lib/adb/client';
         }, []);
         return Promise.map(networks, async (subnet) => {
           // console.info(`Scanner on ${subnet}`);
+          const devices_connected = await this.listDevices();
           const devices = await NetScannerPromise({ target: subnet, port: '5555', status: 'O' });
           return Promise.mapSeries(devices, (device) => {
-            // console.info(`Find on ${subnet} > ${device.ip}:${device.port}, ${device.status}`);
-            if(device.status == 'open') return this.connect(device.ip, device.port).catch(()=>{})
+            if(device.status == 'open' && !_.find(devices_connected, { id: device.id })) {
+              console.info(`Find on ${subnet} > ${device.ip}:${device.port}, ${device.status}`);
+              return this.connect(device.ip, device.port).catch(()=>{})
+            }
           });
         })
         .finally((e) => Promise.delay(5000).then(networkRepeater));
@@ -56,4 +59,4 @@ import Client from 'adbkit/lib/adb/client';
       return trackerAlways;
     }).nodeify(callback);
   }  
-// }
+}
