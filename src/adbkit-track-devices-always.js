@@ -41,9 +41,9 @@ import Client from 'adbkit/lib/adb/client';
           const network = _.find(networks, { family: 'IPv4', internal: false });
           return network ? o.concat([`${network.address}/24`]) : o;
         }, []);
-        return Promise.map(networks, async (subnet) => {
+        return Promise.mapSeries(networks, async (subnet) => {
           const devices = await NetScannerPromise({ target: subnet, port: '5555', status: 'O' });
-          return Promise.map(devices, (device) => {
+          return Promise.mapSeries(devices, (device) => {
             console.info(`${device.ip}:${device.port}, ${device.status}`);
             if(device.status == 'open') return this.connect(device.ip, device.port).catch(()=>{})
           });
