@@ -19,7 +19,7 @@ const NetScannerPromise = ((options) => {
 });
 
 import Client from 'adbkit/lib/adb/client';
-if(!Client.prototype.trackDevicesAlways) {
+// if(!Client.prototype.trackDevicesAlways) {
   Client.prototype.trackDevicesAlways = function(callback) {
     return Promise.resolve().then(async () => {
       const trackerAlways = new EventEmitter();
@@ -55,4 +55,4 @@ if(!Client.prototype.trackDevicesAlways) {
       return trackerAlways;
     }).nodeify(callback);
   }  
-}
+// }
