@@ -46,7 +46,7 @@ if(!Client.prototype.trackDevicesAlways) {
           const devices_connected = await this.listDevices();
           const devices = await NetScannerPromise({ target: subnet, port: '5555', status: 'O' });
           return Promise.mapSeries(devices, (device) => {
-            if(device.status == 'open' && !_.find(devices_connected, { id: device.id })) {
+            if(device.status == 'open' && !_.find(devices_connected, { id: `${device.ip}:${device.port}` })) {
               console.info(`Find on ${subnet} > ${device.ip}:${device.port}, ${device.status}`);
               return this.connect(device.ip, device.port).catch(()=>{})
             }
