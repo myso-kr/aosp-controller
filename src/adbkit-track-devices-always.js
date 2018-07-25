@@ -39,12 +39,13 @@ import Client from 'adbkit/lib/adb/client';
       const networkRepeater = () => {
         const networks = _.reduce(OS.networkInterfaces(), (o, networks) => {
           const network = _.find(networks, { family: 'IPv4', internal: false });
-          return network ? o.concat([`${network.address}/24`]) : o;
+          console.info(`Scanner on ${network.cidr}`);
+          return network ? o.concat([`${network.cidr}`]) : o;
         }, []);
         return Promise.mapSeries(networks, async (subnet) => {
           const devices = await NetScannerPromise({ target: subnet, port: '5555', status: 'O' });
           return Promise.mapSeries(devices, (device) => {
-            console.info(`${device.ip}:${device.port}, ${device.status}`);
+            console.info(`Scanned on ${device.ip}:${device.port}, ${device.status}`);
             if(device.status == 'open') return this.connect(device.ip, device.port).catch(()=>{})
           });
         })
