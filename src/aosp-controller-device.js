@@ -323,12 +323,15 @@ export async function ControllerDeviceChrome(adb, serial, rooted) {
     
     const cacheListDays = await adb.shellWait(serial, `find ${CHROME_CACHE_BASE} -maxdepth 1 -mtime -1`);
     const cachesDays = cacheListDays.toString().trim().split(CHROME_CACHE_BASE).join('').split('\n').map(_.toNumber);
+
     const cacheList = await adb.shellWait(serial, `ls -1c ${CHROME_CACHE_BASE}`);
     const caches = cacheList.toString().trim().split('\n').map(_.toNumber);
-    const cache = _.sample((caches.length >= CHROME_CACHE_SIZE) ? _.xor(_.clone(caches), cachesDays) : _.xor(_.clone(caches), _.range(1, 9999)));
+
+    const cache = _.sample((caches.length >= CHROME_CACHE_SIZE) ? _.xor(_.concat([], caches), cachesDays) : _.xor(_.concat([], caches), _.range(1, 9999)));
     const crowner = (await adb.shellWait(serial, 'su -c "F=($(ls -ld /data/data/com.android.chrome/)) && echo ${F[2]}" root')).toString().trim() || 'root';
 
     console.info(`Loop Controller Chrome by ${serial}`);
+    console.info(`- MAX: ${CHROME_CACHE_SIZE}, CUR: ${cachesDays.length}, NOW: ${cache}, USR: ${crowner}`);
     console.info(`- MAX: ${CHROME_CACHE_SIZE}, CUR: ${caches.length}, NOW: ${cache}, USR: ${crowner}`);
     return adb.chrome(serial, {
       port: port,
