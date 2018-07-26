@@ -331,7 +331,8 @@ export async function ControllerDeviceChrome(adb, serial, rooted) {
     const crowner = (await adb.shellWait(serial, 'su -c "F=($(ls -ld /data/data/com.android.chrome/)) && echo ${F[2]}" root')).toString().trim() || 'root';
 
     console.info(`Loop Controller Chrome by ${serial}`);
-    console.info(`- MAX: ${CHROME_CACHE_SIZE}, CUR: ${cachesDays.length}, NOW: ${cache}, USR: ${crowner}`);
+    console.info(`${cachesDays.length} ${JSON.stringify(cachesDays)}`);
+    console.info(`${caches.length} ${JSON.stringify(caches)}`);
     console.info(`- MAX: ${CHROME_CACHE_SIZE}, CUR: ${caches.length}, NOW: ${cache}, USR: ${crowner}`);
     return adb.chrome(serial, {
       port: port,
