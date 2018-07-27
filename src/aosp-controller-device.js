@@ -244,7 +244,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
             await Runtime.evaluate({ userGesture: false, expression: `document.activeElement.dispatchEvent(new CompositionEvent('compositionend', { data: '${inputLast}' }));` });
           }
           isComposing = false;
-          // await Runtime.evaluate({ userGesture: false, expression: `document.activeElement.value = '${input.substring(0, input.length - 1)}'` });
+          await Runtime.evaluate({ userGesture: false, expression: `document.activeElement.value = '${input.substring(0, input.length - 1)}'` });
           await Page.bringToFront(); await Input.dispatchKeyEvent({ type: 'char', text: char, windowsVirtualKeyCode: charCode, nativeVirtualKeyCode: charCode });
         }
       }).delay(_.random(30, 70))
