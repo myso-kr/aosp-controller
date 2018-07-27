@@ -328,6 +328,7 @@ export async function ControllerDeviceChrome(adb, serial, rooted) {
     const caches = cacheList.toString().trim().split(CHROME_CACHE_BASE).join('').split('\n').map(_.toNumber);
 
     const cache = _.sample((caches.length >= CHROME_CACHE_SIZE) ? _.xor(cachesDays, caches) : _.xor(cache, _.range(1, 9999)));
+    if(!cache) { throw new Error('cannot get cache'); }
     const crowner = (await adb.shellWait(serial, 'su -c "F=($(ls -ld /data/data/com.android.chrome/)) && echo ${F[2]}" root')).toString().trim() || 'root';
 
     console.info(`Loop Controller Chrome by ${serial}`);
