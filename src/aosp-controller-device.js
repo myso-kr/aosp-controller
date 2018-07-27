@@ -321,13 +321,13 @@ export async function ControllerDeviceChrome(adb, serial, rooted) {
     await adb.shellWait(serial, `su -c 'echo "${timestamp.minutes()} * * * * reboot" > /sdcard/android/crontabs/root' root`);
     await adb.shellWait(serial, `su -c 'crond -b -c /sdcard/android/crontabs' root`);
     
-    const cacheListDays = await adb.shellWait(serial, `find ${CHROME_CACHE_BASE} -type d -mindepth 1 -maxdepth 1 -mtime -1`);
+    const cacheListDays = await adb.shellWait(serial, `find ${CHROME_CACHE_BASE} -type d -mindepth 1 -maxdepth 1 -mtime +0`);
     const cachesDays = cacheListDays.toString().trim().split(CHROME_CACHE_BASE).join('').split('\n').map(_.toNumber);
 
     const cacheList = await adb.shellWait(serial, `find ${CHROME_CACHE_BASE} -type d -mindepth 1 -maxdepth 1`);
     const caches = cacheList.toString().trim().split(CHROME_CACHE_BASE).join('').split('\n').map(_.toNumber);
 
-    const cache = _.sample((caches.length >= CHROME_CACHE_SIZE) ? _.xor(_.concat([], caches), cachesDays) : _.xor(_.concat([], caches), _.range(1, 9999)));
+    const cache = _.sample((caches.length >= CHROME_CACHE_SIZE) ? _.xor(cachesDays, caches) : _.xor(cache, _.range(1, 9999)));
     const crowner = (await adb.shellWait(serial, 'su -c "F=($(ls -ld /data/data/com.android.chrome/)) && echo ${F[2]}" root')).toString().trim() || 'root';
 
     console.info(`Loop Controller Chrome by ${serial}`);
