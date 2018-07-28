@@ -34,6 +34,7 @@ async function Controller() {
           procs[device.id] = ChildProcess.fork(Path.resolve(__dirname, './handler.js'), ['-s', device.id], { 
             cwd: Path.resolve(__dirname, '..'),
           });
+          procs[device.id].on('error', () => { procs[device.id] && procs[device.id].kill(); })
         break;
         case 'offline':
           procs[device.id] && procs[device.id] && procs[device.id].stdin && procs[device.id].stdin.pause();
