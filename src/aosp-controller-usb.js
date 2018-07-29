@@ -21,5 +21,5 @@ export default async function ControllerUSB(adb, serial) {
   })
   .timeout(1000 * 60 * 5)
   .then(() => ControllerUSB(adb, serial))
-  .catch((e) => console.error(e))
+  .catch((e) => console.error(`${serial} > ${e.message}`))
 }
