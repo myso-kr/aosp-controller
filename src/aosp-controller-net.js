@@ -79,6 +79,6 @@ export default async function ControllerNET(adb, serial) {
     await ControllerDevice(adb, serial, rooted);
   })
   .timeout(1000 * 60 * 5)
-  .catch((e) => console.error(e))
+  .catch((e) => console.error(`${serial} > ${e.message}`))
   .finally(() => adb.disconnect(serial))
 }
