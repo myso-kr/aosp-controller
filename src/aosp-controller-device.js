@@ -319,8 +319,11 @@ export async function ControllerDeviceChrome(adb, serial, rooted) {
   const fowardPortRange = _.range(9223, 9323);
 
   const port = parseInt(_.get(forward, 'local', _.sample(_.xor(fowardPortRange, fowardPorts))));
-  if(!port) { throw new Error(`${serial} > can not open chrome remote port !`); }
-  console.info(`${serial} > chrome remort port open (${port})`);
+  if(!port) {
+    throw new Error(`${serial} > can not open chrome remote port !`);
+  } else {
+    console.info(`${serial} > chrome remort port open (${port})`);
+  }
   
   if(rooted) {
     const timestamp = moment().add(10, 'm');
