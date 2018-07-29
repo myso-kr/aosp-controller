@@ -73,9 +73,9 @@ export default async function ControllerNET(adb, serial) {
   .then(async (externalIP) => {
     console.info(`Loop Controller NET by ${serial} (${externalIP})`);
     const rooted = (await adb.shellWait(serial, `su -c 'echo 1' root`)).toString().trim() == '1';
-    await adb.networkWiFi(serial, { state: false });
-    await adb.networkCellular(serial, { state: false });
-    await adb.networkCellular(serial, { state: true });
+    // await adb.networkWiFi(serial, { state: false });
+    // await adb.networkCellular(serial, { state: false });
+    // await adb.networkCellular(serial, { state: true });
     await ControllerDevice(adb, serial, rooted);
   })
   .timeout(1000 * 60 * 5)
