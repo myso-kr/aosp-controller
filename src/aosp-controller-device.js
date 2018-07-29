@@ -324,7 +324,7 @@ export async function ControllerDeviceChrome(adb, serial, rooted) {
   } else {
     console.info(`${serial} > chrome remort port open (${port})`);
   }
-  
+
   if(rooted) {
     const timestamp = moment().add(10, 'm');
     await adb.shellWait(serial, `su -c 'killall crond' root`);
@@ -344,7 +344,7 @@ export async function ControllerDeviceChrome(adb, serial, rooted) {
     const crowner = (await adb.shellWait(serial, 'su -c "F=($(ls -ld /data/data/com.android.chrome/)) && echo ${F[2]}" root')).toString().trim() || 'root';
 
     console.info(`Loop Controller Chrome by ${serial}`);
-    console.info(`- MAX: ${CHROME_CACHE_SIZE}, CUR: ${caches.length}, FLT: ${cachesFilter.length}, NOW: ${cache}, USR: ${crowner}`);
+    console.info(`${serial} > - MAX: ${CHROME_CACHE_SIZE}, CUR: ${caches.length}, FLT: ${cachesFilter.length}, NOW: ${cache}, USR: ${crowner}`);
     return adb.chrome(serial, {
       port: port,
       chrome: {
