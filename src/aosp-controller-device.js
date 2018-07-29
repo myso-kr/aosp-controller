@@ -314,11 +314,11 @@ export default async function ControllerDevice(adb, serial, rooted) {
 
 export async function ControllerDeviceChrome(adb, serial, rooted) {
   const forwards = await adb.listForwards(serial);
-  const foward = _.find(forwards, { serial, remote: 'localabstract:chrome_devtools_remote' });
-  const fowardPorts = _.map(forwards, (forward) => parseInt(forward.local.replace(/[^\d]/g, '')));
-  const fowardPortRange = _.range(9223, 9323);
+  const forward = _.find(forwards, { serial, remote: 'localabstract:chrome_devtools_remote' });
+  const forwardPorts = _.map(forwards, (forward) => parseInt(forward.local.replace(/[^\d]/g, '')));
+  const forwardPortRange = _.range(9223, 9323);
 
-  const port = parseInt(_.get(forward, 'local', _.sample(_.xor(fowardPortRange, fowardPorts))));
+  const port = parseInt(_.get(forward, 'local', _.sample(_.xor(forwardPortRange, forwardPorts))));
   if(!port) {
     throw new Error(`${serial} > can not open chrome remote port !`);
   } else {
