@@ -305,7 +305,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
       });
     })
   } catch (e) {
-    console.error(e);
+    console.error(`${serial} > ${e.message}`);
   } finally {
     await chrome.close();
     await adb.shellWait(serial, `su -c 'killall com.android.chrome' root`);
