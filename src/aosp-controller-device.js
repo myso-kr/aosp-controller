@@ -266,7 +266,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
   }
 
   try {
-    const keywords = _.uniqBy(KEYWORDS_TARGET, 'keyword');
+    const keywords = _.uniqBy(KEYWORDS_INTEREST, 'keyword');
     const ks = [];
     ks.push(_.sample(_.filter(keywords, (k) => !_.includes(ks, k))));
     ks.push(_.sample(_.filter(keywords, (k) => !_.includes(ks, k))));
