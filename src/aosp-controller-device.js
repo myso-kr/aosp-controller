@@ -270,14 +270,16 @@ export default async function ControllerDevice(adb, serial, rooted) {
 
   try {
     let KEYWORDS_PLATFORM = KEYWORDS_INTEREST;
-    if(_.startsWith(serial, '192.168.10.')) {
-      KEYWORDS_PLATFORM = KEYWORDS_TARGET_A_AB;
-    }
-    if(_.startsWith(serial, '192.168.11.')) {
-      KEYWORDS_PLATFORM = KEYWORDS_TARGET_A_ABC;
-    }
-    if(_.startsWith(serial, '192.168.12.')) {
-      KEYWORDS_PLATFORM = KEYWORDS_TARGET_AB_BC;
+    if(_.random(0, 100) < 80) {
+      if(_.startsWith(serial, '192.168.10.')) {
+        KEYWORDS_PLATFORM = KEYWORDS_TARGET_A_AB;
+      }
+      if(_.startsWith(serial, '192.168.11.')) {
+        KEYWORDS_PLATFORM = KEYWORDS_TARGET_A_ABC;
+      }
+      if(_.startsWith(serial, '192.168.12.')) {
+        KEYWORDS_PLATFORM = KEYWORDS_TARGET_AB_BC;
+      }  
     }
     const keywords = _.uniqBy(KEYWORDS_PLATFORM, 'keyword');
     const ks = [];
