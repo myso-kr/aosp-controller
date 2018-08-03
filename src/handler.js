@@ -31,9 +31,6 @@ if(argv.serial) {
 /* TODO Process Exit */
 process.stdin.resume();
 function exitHandler(options, err) {
-    if (PROXY_SERVER) PROXY_SERVER.close();
-    if (APPIUM_SERVER) APPIUM_SERVER.close();
-    if (APPIUM_ADB) APPIUM_ADB.adbExec(['kill-server']);
     if (err) console.info(`${err.stack}`);
     if (options.exit) process.exit();
 }
