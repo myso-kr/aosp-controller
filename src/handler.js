@@ -27,3 +27,18 @@ if(argv.serial) {
   if( isUSB) ControllerUSB(adb, argv.serial);
   if(!isUSB) ControllerNET(adb, argv.serial);
 }
+
+/* TODO Process Exit */
+process.stdin.resume();
+function exitHandler(options, err) {
+    if (PROXY_SERVER) PROXY_SERVER.close();
+    if (APPIUM_SERVER) APPIUM_SERVER.close();
+    if (APPIUM_ADB) APPIUM_ADB.adbExec(['kill-server']);
+    if (err) console.info(`${err.stack}`);
+    if (options.exit) process.exit();
+}
+process.on('exit', exitHandler.bind(null,{cleanup:true}));
+process.on('SIGINT', exitHandler.bind(null, {exit:true}));
+process.on('SIGUSR1', exitHandler.bind(null, {exit:true}));
+process.on('SIGUSR2', exitHandler.bind(null, {exit:true}));
+process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
