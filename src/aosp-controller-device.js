@@ -16,6 +16,9 @@ const CHROME_CACHE_TABS = '/data/data/com.android.chrome/app_tabs';
 
 
 const KEYWORDS_TARGET   = require('../target.json');
+const KEYWORDS_TARGET_A_AB   = require('../target-test-001.json');
+const KEYWORDS_TARGET_A_ABC  = require('../target-test-002.json');
+const KEYWORDS_TARGET_AB_BC  = require('../target-test-003.json');
 const KEYWORDS_INTEREST = require('../interest.json');
 
 export default async function ControllerDevice(adb, serial, rooted) {
@@ -266,7 +269,17 @@ export default async function ControllerDevice(adb, serial, rooted) {
   }
 
   try {
-    const keywords = _.uniqBy(KEYWORDS_INTEREST, 'keyword');
+    let KEYWORDS_PLATFORM = KEYWORDS_INTEREST;
+    if(_.startsWith(serial, '192.168.10.')) {
+      KEYWORDS_PLATFORM = KEYWORDS_TARGET_A_AB;
+    }
+    if(_.startsWith(serial, '192.168.11.')) {
+      KEYWORDS_PLATFORM = KEYWORDS_TARGET_A_ABC;
+    }
+    if(_.startsWith(serial, '192.168.12.')) {
+      KEYWORDS_PLATFORM = KEYWORDS_TARGET_AB_BC;
+    }
+    const keywords = _.uniqBy(KEYWORDS_PLATFORM, 'keyword');
     const ks = [];
     ks.push(_.sample(_.filter(keywords, (k) => !_.includes(ks, k))));
     ks.push(_.sample(_.filter(keywords, (k) => !_.includes(ks, k))));
