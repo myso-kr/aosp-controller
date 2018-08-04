@@ -14,6 +14,7 @@ const CHROME_CACHE_BASE = '/data/local/chrome-cache/';
 const CHROME_CACHE_APPS = '/data/data/com.android.chrome/app_chrome';
 const CHROME_CACHE_TABS = '/data/data/com.android.chrome/app_tabs';
 
+const TRENDS_TIMELINES   = require('../trends-timeline.json');
 
 const KEYWORDS_TARGET   = require('../target.json');
 const KEYWORDS_TARGET_A_AB   = require('../target-test-001.json');
@@ -269,8 +270,11 @@ export default async function ControllerDevice(adb, serial, rooted) {
   }
 
   try {
+    const TRENDS_TIMELINE = _.nth(TRENDS_TIMELINE, moment().isoWeekday() % 7);
+    const TRENDS_TIMELINE_HOUR = _.nth(TRENDS_TIMELINE, moment().hours());
+
     let KEYWORDS_PLATFORM = KEYWORDS_INTEREST;
-    if(_.random(0, 100) < 80) {
+    if(_.random(0, 100) < TRENDS_TIMELINE_HOUR) {
       if(_.startsWith(serial, '192.168.10.')) {
         KEYWORDS_PLATFORM = KEYWORDS_TARGET_A_AB;
       }
@@ -279,8 +283,9 @@ export default async function ControllerDevice(adb, serial, rooted) {
       }
       if(_.startsWith(serial, '192.168.12.')) {
         KEYWORDS_PLATFORM = KEYWORDS_TARGET_AB_BC;
-      }  
+      }
     }
+    
     const keywords = _.uniqBy(KEYWORDS_PLATFORM, 'keyword');
     const ks = [];
     ks.push(_.sample(_.filter(keywords, (k) => !_.includes(ks, k))));
