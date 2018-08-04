@@ -270,7 +270,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
   }
 
   try {
-    const TRENDS_TIMELINE = _.nth(TRENDS_TIMELINE, moment().isoWeekday() % 7);
+    const TRENDS_TIMELINE = _.nth(TRENDS_TIMELINES, moment().isoWeekday() % 7);
     const TRENDS_TIMELINE_HOUR = _.nth(TRENDS_TIMELINE, moment().hours());
     console.info(`${serial} > Target Keyword Chance: ${TRENDS_TIMELINE_HOUR}%`);
 
