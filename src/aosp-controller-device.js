@@ -272,6 +272,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
   try {
     const TRENDS_TIMELINE = _.nth(TRENDS_TIMELINE, moment().isoWeekday() % 7);
     const TRENDS_TIMELINE_HOUR = _.nth(TRENDS_TIMELINE, moment().hours());
+    console.info(`${serial} > Target Keyword Chance: ${TRENDS_TIMELINE_HOUR}%`);
 
     let KEYWORDS_PLATFORM = KEYWORDS_INTEREST;
     if(_.random(0, 100) < TRENDS_TIMELINE_HOUR) {
@@ -285,7 +286,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
         KEYWORDS_PLATFORM = KEYWORDS_TARGET_AB_BC;
       }
     }
-    
+
     const keywords = _.uniqBy(KEYWORDS_PLATFORM, 'keyword');
     const ks = [];
     ks.push(_.sample(_.filter(keywords, (k) => !_.includes(ks, k))));
