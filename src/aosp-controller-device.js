@@ -84,6 +84,18 @@ export default async function ControllerDevice(adb, serial, rooted) {
         })(WebGLRenderingContext.prototype.getParameter);
       }
     `);
+    overrides.push(`
+      if(window.UNMASKED_RENDERER_WEBGL && window.UNMASKED_VENDOR_WEBGL) {
+        WebGL2RenderingContext.prototype.getParameter = (function(o) {
+          return function(param){
+            var info = this.getExtension("WEBGL_debug_renderer_info");
+            if(param === info.UNMASKED_RENDERER_WEBGL) return window.UNMASKED_RENDERER_WEBGL;
+            if(param === info.UNMASKED_VENDOR_WEBGL)   return window.UNMASKED_VENDOR_WEBGL;
+            return o.apply(this, [param]);
+          }
+        })(WebGL2RenderingContext.prototype.getParameter);
+      }
+    `);
     await Page.addScriptToEvaluateOnNewDocument({ source: overrides.join(';\n') });
     await Page.javascriptDialogOpening(async ({message, type}) => {
         try {
