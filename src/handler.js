@@ -26,4 +26,15 @@ if(argv.serial) {
   const isUSB = argv.serial.indexOf(':5555') == -1;
   if( isUSB) ControllerUSB(adb, argv.serial);
   if(!isUSB) ControllerNET(adb, argv.serial);
+
+  process.stdin.resume();
+  function exitHandler(options, err) {
+      if (err) console.error(err.stack);
+      if (options.exit) process.exit();
+  }
+  process.on('exit', exitHandler.bind(null,{cleanup:true}));
+  process.on('SIGINT', exitHandler.bind(null, {exit:true}));
+  process.on('SIGUSR1', exitHandler.bind(null, {exit:true}));
+  process.on('SIGUSR2', exitHandler.bind(null, {exit:true}));
+  process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
 }
