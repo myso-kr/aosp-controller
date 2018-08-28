@@ -29,7 +29,7 @@ if(argv.serial) {
 
   process.stdin.resume();
   function exitHandler(options, err) {
-      if (err) console.error(err.stack);
+      if (err) console.error(`${argv.serial} > ${err.message}`);
       if (options.exit) process.exit();
   }
   process.on('exit', exitHandler.bind(null,{cleanup:true}));
