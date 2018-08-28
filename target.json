@@ -1,183 +1,72 @@
 [
-  { "keyword": "가람동물병원" },
-
-  { "keyword": "가람동물병원 블로그" },
-  { "keyword": "가람동물병원 주소" },
-  { "keyword": "가람동물병원 찾아가는 길" },
-  { "keyword": "가람동물병원 가는 길" },
-  { "keyword": "가람동물병원 윤영기 원장" },
-
-  { "keyword": "가람동물병원 호텔" },
-  { "keyword": "가람동물병원 미용" },
-
-  { "keyword": "서울 가람동물병원" },
-  { "keyword": "강동구 가람동물병원" },
-  { "keyword": "성내동 가람동물병원" },
-  { "keyword": "강동구청 가람동물병원" },
-
-  { "keyword": "서울 동물병원 추천" },
-  { "keyword": "강동구 동물병원 추천" },
-  { "keyword": "성내동 동물병원 추천" },
-  { "keyword": "강동구청 동물병원 추천" },
-
-  { "keyword": "힐스 사료" },
-  { "keyword": "프루너스 사료" },
-  { "keyword": "닥터힐메딕스 사료" },
-  { "keyword": "프루너스 샴푸" },
-  { "keyword": "닥터힐메딕스 샴푸" },
-
-  { "keyword": "비숑 미용" },
-  { "keyword": "강동구 비숑 미용" },
-  { "keyword": "성내동 비숑 미용" },
-
-  { "keyword": "말티즈 미용" },
-  { "keyword": "강동구 말티즈 미용" },
-  { "keyword": "성내동 말티즈 미용" },
-
-  { "keyword": "코기 미용" },
-  { "keyword": "강동구 코기 미용" },
-  { "keyword": "성내동 코기 미용" },
-
-  { "keyword": "푸들 미용" },
-  { "keyword": "강동구 푸들 미용" },
-  { "keyword": "성내동 푸들 미용" },
-
-  { "keyword": "믹스견 미용" },
-  { "keyword": "강동구 믹스견 미용" },
-  { "keyword": "성내동 믹스견 미용" },
-
-  { "keyword": "요크셔테리어 미용" },
-  { "keyword": "강동구 요크셔테리어 미용" },
-  { "keyword": "성내동 요크셔테리어 미용" },
-
-  { "keyword": "포메 미용" },
-  { "keyword": "강동구 포메 미용" },
-  { "keyword": "성내동 포메 미용" },
-  { "keyword": "포메라니안 미용" },
-  { "keyword": "강동구 포메라니안 미용" },
-  { "keyword": "성내동 포메라니안 미용" },
-
-  { "keyword": "동물병원" },
-  { "keyword": "동물병원 사료" },
-  { "keyword": "동물병원 샴푸" },
-  { "keyword": "동물병원 처방사료" },
-  { "keyword": "동물병원 처방샴푸" },
-  { "keyword": "처방사료" },
-  { "keyword": "처방샴푸" },
-  { "keyword": "병원사료" },
-  { "keyword": "병원샴푸" },
-  { "keyword": "애견미용" },
-  { "keyword": "애견미용샵" },
-  { "keyword": "강아지 미용" },
-  { "keyword": "강아지 미용샵" },
-  { "keyword": "강아지 슬개골탈구" },
-  { "keyword": "강아지 피부고름" },
-  { "keyword": "강아지 피부염" },
-  { "keyword": "강아지 감기" },
-  { "keyword": "강아지 입냄새" },
-  { "keyword": "강아지 심장사상충" },
-  { "keyword": "강아지 알러지" },
-  { "keyword": "강아지 알레르기" },
-  { "keyword": "강아지 탈모" },
-  { "keyword": "강아지 호텔" },
-  { "keyword": "강아지 여행" },
-  { "keyword": "강아지 맡기는 곳" },
-  { "keyword": "고양이 미용" },
-  { "keyword": "고양이 미용샵" },
-  { "keyword": "고양이 링웜" },
-  { "keyword": "고양이 피부염" },
-  { "keyword": "고양이 알러지" },
-  { "keyword": "고양이 알레르기" },
-  { "keyword": "고양이 감기" },
-  { "keyword": "고양이 맡기는 곳" },
-
-  { "keyword": "서울 동물병원" },
-  { "keyword": "서울 동물병원 사료" },
-  { "keyword": "서울 동물병원 샴푸" },
-  { "keyword": "서울 동물병원 처방사료" },
-  { "keyword": "서울 동물병원 처방샴푸" },
-  { "keyword": "서울 처방사료" },
-  { "keyword": "서울 처방샴푸" },
-  { "keyword": "서울 병원사료" },
-  { "keyword": "서울 병원샴푸" },
-  { "keyword": "서울 애견미용" },
-  { "keyword": "서울 애견미용샵" },
-  { "keyword": "서울 강아지 미용" },
-  { "keyword": "서울 강아지 미용샵" },
-  { "keyword": "서울 강아지 슬개골탈구" },
-  { "keyword": "서울 강아지 피부고름" },
-  { "keyword": "서울 강아지 피부염" },
-  { "keyword": "서울 강아지 감기" },
-  { "keyword": "서울 강아지 입냄새" },
-  { "keyword": "서울 강아지 심장사상충" },
-  { "keyword": "서울 강아지 탈모" },
-  { "keyword": "서울 강아지 호텔" },
-  { "keyword": "서울 강아지 여행" },
-  { "keyword": "서울 강아지 맡기는 곳" },
-  { "keyword": "서울 고양이 미용" },
-  { "keyword": "서울 고양이 미용샵" },
-  { "keyword": "서울 고양이 링웜" },
-  { "keyword": "서울 고양이 피부염" },
-  { "keyword": "서울 고양이 감기" },
-  { "keyword": "서울 고양이 맡기는 곳" },
-
-  { "keyword": "강동구 동물병원" },
-  { "keyword": "강동구 동물병원 사료" },
-  { "keyword": "강동구 동물병원 샴푸" },
-  { "keyword": "강동구 동물병원 처방사료" },
-  { "keyword": "강동구 동물병원 처방샴푸" },
-  { "keyword": "강동구 처방사료" },
-  { "keyword": "강동구 처방샴푸" },
-  { "keyword": "강동구 병원사료" },
-  { "keyword": "강동구 병원샴푸" },
-  { "keyword": "강동구 애견미용" },
-  { "keyword": "강동구 애견미용샵" },
-  { "keyword": "강동구 강아지 미용" },
-  { "keyword": "강동구 강아지 미용샵" },
-  { "keyword": "강동구 강아지 슬개골탈구" },
-  { "keyword": "강동구 강아지 피부고름" },
-  { "keyword": "강동구 강아지 피부염" },
-  { "keyword": "강동구 강아지 감기" },
-  { "keyword": "강동구 강아지 입냄새" },
-  { "keyword": "강동구 강아지 심장사상충" },
-  { "keyword": "강동구 강아지 탈모" },
-  { "keyword": "강동구 강아지 호텔" },
-  { "keyword": "강동구 강아지 여행" },
-  { "keyword": "강동구 강아지 맡기는 곳" },
-  { "keyword": "강동구 고양이 미용" },
-  { "keyword": "강동구 고양이 미용샵" },
-  { "keyword": "강동구 고양이 링웜" },
-  { "keyword": "강동구 고양이 피부염" },
-  { "keyword": "강동구 고양이 감기" },
-  { "keyword": "강동구 고양이 맡기는 곳" },
-
-  { "keyword": "성내동 동물병원" },
-  { "keyword": "성내동 동물병원 사료" },
-  { "keyword": "성내동 동물병원 샴푸" },
-  { "keyword": "성내동 동물병원 처방사료" },
-  { "keyword": "성내동 동물병원 처방샴푸" },
-  { "keyword": "성내동 처방사료" },
-  { "keyword": "성내동 처방샴푸" },
-  { "keyword": "성내동 병원사료" },
-  { "keyword": "성내동 병원샴푸" },
-  { "keyword": "성내동 애견미용" },
-  { "keyword": "성내동 애견미용샵" },
-  { "keyword": "성내동 강아지 미용" },
-  { "keyword": "성내동 강아지 미용샵" },
-  { "keyword": "성내동 강아지 슬개골탈구" },
-  { "keyword": "성내동 강아지 피부고름" },
-  { "keyword": "성내동 강아지 피부염" },
-  { "keyword": "성내동 강아지 감기" },
-  { "keyword": "성내동 강아지 입냄새" },
-  { "keyword": "성내동 강아지 심장사상충" },
-  { "keyword": "성내동 강아지 탈모" },
-  { "keyword": "성내동 강아지 호텔" },
-  { "keyword": "성내동 강아지 여행" },
-  { "keyword": "성내동 강아지 맡기는 곳" },
-  { "keyword": "성내동 고양이 미용" },
-  { "keyword": "성내동 고양이 미용샵" },
-  { "keyword": "성내동 고양이 링웜" },
-  { "keyword": "성내동 고양이 피부염" },
-  { "keyword": "성내동 고양이 감기" },
-  { "keyword": "성내동 고양이 맡기는 곳" }
+  {
+    "prefix_host": "192.168.10.",
+    "keywords": [
+      { "keyword": "별이네" },
+      { "keyword": "리바이오틱스키즈" }
+    ]
+  },
+  {
+    "prefix_host": "192.168.11.",
+    "keywords": [
+      { "keyword": "별이네" },
+      { "keyword": "엘포비키즈" }
+    ]
+  },
+  {
+    "prefix_host": "192.168.12.",
+    "keywords": [
+      { "keyword": "예상키보다 20cm 더 키운사례" },
+      { "keyword": "키성장" }
+    ]
+  },
+  {
+    "prefix_host": "192.168.13.",
+    "keywords": [
+      { "keyword": "노유민30kg감량방법" },
+      { "keyword": "건강한다이어트방법" }
+    ]
+  },
+  {
+    "prefix_host": "192.168.14.",
+    "keywords": [
+      { "keyword": "대한민국신지식인 길스시" },
+      { "keyword": "부산상견례" }
+    ]
+  },
+  {
+    "prefix_host": "192.168.15.",
+    "keywords": [
+      { "keyword": "예상키보다 20cm 더 키운사례" },
+      { "keyword": "키성장" }
+    ]
+  },
+  {
+    "prefix_host": "192.168.16.",
+    "keywords": [
+      { "keyword": "아이두헤어 김포점" },
+      { "keyword": "구래동미용실" }
+    ]
+  },
+  {
+    "prefix_host": "192.168.17.",
+    "keywords": [
+      { "keyword": "운동없이 Back Diet" },
+      { "keyword": "다리살빼는법" }
+    ]
+  },
+  {
+    "prefix_host": "192.168.18.",
+    "keywords": [
+      { "keyword": "사랑인한의원 수원점" },
+      { "keyword": "수원한의원추천" }
+    ]
+  },
+  {
+    "prefix_host": "192.168.19.",
+    "keywords": [
+      { "keyword": "연산역1번출구앞 다솜치과" },
+      { "keyword": "부산시청치과" }
+    ]
+  }
 ]

@@ -17,9 +17,6 @@ const CHROME_CACHE_TABS = '/data/data/com.android.chrome/app_tabs';
 const TRENDS_TIMELINES   = require('../trends-timeline.json');
 
 const KEYWORDS_TARGET   = require('../target.json');
-const KEYWORDS_TARGET_A_AB   = require('../target-test-001.json');
-const KEYWORDS_TARGET_A_ABC  = require('../target-test-002.json');
-const KEYWORDS_TARGET_AB_BC  = require('../target-test-003.json');
 const KEYWORDS_INTEREST = require('../interest.json');
 
 export default async function ControllerDevice(adb, serial, rooted) {
@@ -286,21 +283,14 @@ export default async function ControllerDevice(adb, serial, rooted) {
     const TRENDS_TIMELINE_HOUR = _.nth(TRENDS_TIMELINE, moment().hours());
     console.info(`${serial} > Target Keyword Chance: ${TRENDS_TIMELINE_HOUR}%`);
 
-    
     const ks = [];
     let KEYWORDS_PLATFORM = KEYWORDS_INTEREST;
     if(_.random(0, 100) < TRENDS_TIMELINE_HOUR) {
-      if(_.startsWith(serial, '192.168.10.')) {
-        KEYWORDS_PLATFORM = KEYWORDS_TARGET_A_AB;
-      }else
-      if(_.startsWith(serial, '192.168.11.')) {
-        KEYWORDS_PLATFORM = KEYWORDS_TARGET_A_ABC;
-      }else
-      if(_.startsWith(serial, '192.168.12.')) {
-        KEYWORDS_PLATFORM = KEYWORDS_TARGET_AB_BC;
-      }else{
-        KEYWORDS_PLATFORM = KEYWORDS_TARGET;
-        if(_.random(0, 100) < 30) ks.push(KEYWORDS_PLATFORM[0]);
+      const KEYWORDS_BY_HOST = _.find(KEYWORDS_TARGET, (o) => _.startsWith(serial, o.prefix_host));
+      if(KEYWORDS_BY_HOST) {
+        KEYWORDS_PLATFORM = KEYWORDS_BY_HOST.keywords;
+      } else {
+        KEYWORDS_PLATFORM = _.reduce(KEYWORDS_TARGET, (r, o) => r.concat(o.keywords), []);
       }
     }
     if(ks.length < 2) ks.push(_.sample(_.filter(_.uniqBy(KEYWORDS_PLATFORM, 'keyword'), (k) => !_.includes(ks, k))));
