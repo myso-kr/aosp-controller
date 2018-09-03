@@ -2,71 +2,57 @@
   {
     "prefix_host": "192.168.10.",
     "keywords": [
-      { "keyword": "별이네" },
-      { "keyword": "리바이오틱스키즈" }
+      { "keyword": "엘카페시토" },
+      { "keyword": "엘카페시토 카페" }
     ]
   },
   {
     "prefix_host": "192.168.11.",
     "keywords": [
-      { "keyword": "별이네" },
-      { "keyword": "엘포비키즈" }
+      { "keyword": "엘카페시토" },
+      { "keyword": "천호동 자전거 거리" }
     ]
   },
   {
     "prefix_host": "192.168.12.",
     "keywords": [
-      { "keyword": "예상키보다 20cm 더 키운사례" },
-      { "keyword": "키성장" }
+      { "keyword": "엘카페시토" },
+      { "keyword": "천호동 자전거 길" }
     ]
   },
   {
     "prefix_host": "192.168.13.",
     "keywords": [
-      { "keyword": "노유민30kg감량방법" },
-      { "keyword": "건강한다이어트방법" }
+      { "keyword": "엘카페시토" },
+      { "keyword": "강아지 데려갈수 있는 카페" }
     ]
   },
   {
     "prefix_host": "192.168.14.",
     "keywords": [
-      { "keyword": "대한민국신지식인 길스시" },
-      { "keyword": "부산상견례" }
+      { "keyword": "엘카페시토" },
+      { "keyword": "저렴한 카페" }
     ]
   },
   {
     "prefix_host": "192.168.15.",
     "keywords": [
-      { "keyword": "예상키보다 20cm 더 키운사례" },
-      { "keyword": "키성장" }
+      { "keyword": "엘카페시토" },
+      { "keyword": "천호동 카페" }
     ]
   },
   {
     "prefix_host": "192.168.16.",
     "keywords": [
-      { "keyword": "아이두헤어 김포점" },
-      { "keyword": "구래동미용실" }
+      { "keyword": "엘카페시토" },
+      { "keyword": "강동구 카페" }
     ]
   },
   {
     "prefix_host": "192.168.17.",
     "keywords": [
-      { "keyword": "운동없이 Back Diet" },
-      { "keyword": "다리살빼는법" }
-    ]
-  },
-  {
-    "prefix_host": "192.168.18.",
-    "keywords": [
-      { "keyword": "사랑인한의원 수원점" },
-      { "keyword": "수원한의원추천" }
-    ]
-  },
-  {
-    "prefix_host": "192.168.19.",
-    "keywords": [
-      { "keyword": "연산역1번출구앞 다솜치과" },
-      { "keyword": "부산시청치과" }
+      { "keyword": "엘카페시토" },
+      { "keyword": "한강변 카페" }
     ]
   }
 ]
