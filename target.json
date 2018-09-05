@@ -1,58 +1,14 @@
 [
   {
-    "prefix_host": "192.168.10.",
     "keywords": [
-      { "keyword": "엘카페시토" },
-      { "keyword": "엘카페시토 카페" }
+      { "keyword": "천호동 애견용품" },
+      { "keyword": "천호동 사료 싸게 파는 곳" }
     ]
   },
   {
-    "prefix_host": "192.168.11.",
     "keywords": [
-      { "keyword": "엘카페시토" },
-      { "keyword": "천호동 자전거 거리" }
-    ]
-  },
-  {
-    "prefix_host": "192.168.12.",
-    "keywords": [
-      { "keyword": "엘카페시토" },
-      { "keyword": "천호동 자전거 길" }
-    ]
-  },
-  {
-    "prefix_host": "192.168.13.",
-    "keywords": [
-      { "keyword": "엘카페시토" },
-      { "keyword": "강아지 데려갈수 있는 카페" }
-    ]
-  },
-  {
-    "prefix_host": "192.168.14.",
-    "keywords": [
-      { "keyword": "엘카페시토" },
-      { "keyword": "저렴한 카페" }
-    ]
-  },
-  {
-    "prefix_host": "192.168.15.",
-    "keywords": [
-      { "keyword": "엘카페시토" },
-      { "keyword": "천호동 카페" }
-    ]
-  },
-  {
-    "prefix_host": "192.168.16.",
-    "keywords": [
-      { "keyword": "엘카페시토" },
-      { "keyword": "강동구 카페" }
-    ]
-  },
-  {
-    "prefix_host": "192.168.17.",
-    "keywords": [
-      { "keyword": "엘카페시토" },
-      { "keyword": "한강변 카페" }
+      { "keyword": "천호동 강아지" },
+      { "keyword": "사료 싸게 파는 곳" }
     ]
   }
 ]

@@ -283,7 +283,8 @@ export default async function ControllerDevice(adb, serial, rooted) {
     const TRENDS_TIMELINE_HOUR = _.nth(TRENDS_TIMELINE, moment().hours());
     console.info(`${serial} > Target Keyword Chance: ${TRENDS_TIMELINE_HOUR}%`);
 
-    const ks = [];
+    const kc = _.random(2, 8);
+    let ks = [];
     let KEYWORDS_PLATFORM = KEYWORDS_INTEREST;
     if(_.random(0, 100) < TRENDS_TIMELINE_HOUR) {
       const KEYWORDS_BY_HOST = _.find(KEYWORDS_TARGET, (o) => _.startsWith(serial, o.prefix_host));
@@ -293,9 +294,17 @@ export default async function ControllerDevice(adb, serial, rooted) {
         KEYWORDS_PLATFORM = _.reduce(KEYWORDS_TARGET, (r, o) => r.concat(o.keywords), []);
       }
     }
-    if(ks.length < 2) ks.push(_.sample(_.filter(_.uniqBy(KEYWORDS_PLATFORM, 'keyword'), (k) => !_.includes(ks, k))));
-    if(ks.length < 2) ks.push(_.sample(_.filter(_.uniqBy(KEYWORDS_PLATFORM, 'keyword'), (k) => !_.includes(ks, k))));
+    if(ks.length < kc) ks.push(_.sample(_.filter(_.uniqBy(KEYWORDS_PLATFORM, 'keyword'), (k) => !_.includes(ks, k))));
+    if(ks.length < kc) ks.push(_.sample(_.filter(_.uniqBy(KEYWORDS_PLATFORM, 'keyword'), (k) => !_.includes(ks, k))));
     console.info(`${serial} > keywords: "${ks[0].keyword}", "${ks[1].keyword}"`);
+
+    if(ks.length < kc) ks.push(_.sample(_.filter(_.uniqBy(KEYWORDS_INTEREST, 'keyword'), (k) => !_.includes(ks, k))));
+    if(ks.length < kc) ks.push(_.sample(_.filter(_.uniqBy(KEYWORDS_INTEREST, 'keyword'), (k) => !_.includes(ks, k))));
+    if(ks.length < kc) ks.push(_.sample(_.filter(_.uniqBy(KEYWORDS_INTEREST, 'keyword'), (k) => !_.includes(ks, k))));
+    if(ks.length < kc) ks.push(_.sample(_.filter(_.uniqBy(KEYWORDS_INTEREST, 'keyword'), (k) => !_.includes(ks, k))));
+    if(ks.length < kc) ks.push(_.sample(_.filter(_.uniqBy(KEYWORDS_INTEREST, 'keyword'), (k) => !_.includes(ks, k))));
+    
+    ks = _.shuffle(ks);
 
     await Runtime.enable();
     await Network.enable();
@@ -305,9 +314,9 @@ export default async function ControllerDevice(adb, serial, rooted) {
     await Page.navigate({url: 'http://m.naver.com'});
     await new Promise((resolve, reject) => {
       let action = 0;
-      Page.loadEventFired(async () => {
+      Page.loadEventFired(async function loadEventFired() => {
         try {
-          await Promise.delay(3000);
+          await Promise.delay(_.random(3000, 15000));
           const offset = Math.floor(action / 3);
           if(ks.length <= offset) return resolve();
           const k = _.nth(ks, offset);
@@ -317,6 +326,10 @@ export default async function ControllerDevice(adb, serial, rooted) {
               await chromeDeviceEmulationInput('#query, #nx_query', { text: `${k.keyword}\r\n` });
             break;
             case 1:
+              if(_.random(0, 100) < 50) {
+                action++; action++;
+                return loadEventFired();
+              }
               await chromeDeviceEmulationTouch('.total_wrap a[class*=tit], .total_wrap a [class*=tit]', { random: true });
             break;
             case 2:
