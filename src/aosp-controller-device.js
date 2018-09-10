@@ -314,7 +314,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
     await Page.navigate({url: 'http://m.naver.com'});
     await new Promise((resolve, reject) => {
       let action = 0;
-      Page.loadEventFired(async function loadEventFired() => {
+      Page.loadEventFired(async function loadEventFired() {
         try {
           await Promise.delay(_.random(3000, 15000));
           const offset = Math.floor(action / 3);
