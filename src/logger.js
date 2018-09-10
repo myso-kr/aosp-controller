@@ -1,3 +1,4 @@
+import moment from 'moment';
 import Logger from 'winston';
 
 module.exports = Logger.createLogger({
@@ -5,6 +6,6 @@ module.exports = Logger.createLogger({
   format: Logger.format.combine(Logger.format.timestamp(), Logger.format.printf((info)=>`${info.timestamp}\t${info.level}\t${info.message}`)),
   transports: [
     new Logger.transports.Console(),
-    new Logger.transports.File({ filename: 'console.log' })
+    new Logger.transports.File({ filename: `console_${moment.format('YYYYMMDD')}.log` })
   ]
 })
