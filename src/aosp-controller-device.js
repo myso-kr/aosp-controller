@@ -283,7 +283,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
     const TRENDS_TIMELINE_HOUR = _.nth(TRENDS_TIMELINE, moment().hours());
     console.info(`${serial} > Target Keyword Chance: ${TRENDS_TIMELINE_HOUR}%`);
 
-    const kc = _.random(2, 8);
+    const kc = _.random(2, 3);
     let ks = [];
     let KEYWORDS_PLATFORM = KEYWORDS_INTEREST;
     if(_.random(0, 100) < TRENDS_TIMELINE_HOUR) {
