@@ -313,26 +313,36 @@ export default async function ControllerDevice(adb, serial, rooted) {
     await chromeDeviceEmulation();
     await Page.navigate({url: 'http://m.naver.com'});
     await new Promise((resolve, reject) => {
-      let action = 0;
+      let action = 0, repeat = 0;
       Page.loadEventFired(async function loadEventFired() {
         try {
           await Promise.delay(_.random(3000, 15000));
           const offset = Math.floor(action / 3);
           if(ks.length <= offset) return resolve();
           const k = _.nth(ks, offset);
+          const ki = !!_.find(KEYWORDS_TARGET, (v)=>!!_.find(v.keywords, k))
           console.info(`${serial} > keyword: (${action}/${offset}) "${k.keyword}"`);
           switch(action++ % 3) {
             case 0:
               await chromeDeviceEmulationInput('#query, #nx_query', { text: `${k.keyword}\r\n` });
             break;
             case 1:
-              if(_.random(0, 100) < 50) {
-                action++; action++;
-                return loadEventFired();
+              if(!ki) {
+                if(_.random(0, 100) < 50) {
+                  action++; action++;
+                  return loadEventFired();
+                }
               }
               await chromeDeviceEmulationTouch('.total_wrap a[class*=tit], .total_wrap a [class*=tit]', { random: true });
             break;
             case 2:
+              if(ki) {
+                if(repeat++ < 3) {
+                  action--;
+                } else {
+                  repeat = 0;
+                }
+              }
               await Promise.mapSeries(_.range(_.random(3, 10)), () => chromeDeviceEmulationSwipe({ direction: 'd' }));
               await chromeDeviceEmulationGoBack({ match: /^https?:\/\/m\.search\.naver\.com/g });
             break;
