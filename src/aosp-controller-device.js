@@ -329,7 +329,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
             case 1:
               if(!ki) {
                 if(_.random(0, 100) < 50) {
-                  action++; action++;
+                  action++;
                   return loadEventFired();
                 }
               }
