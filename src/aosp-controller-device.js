@@ -338,7 +338,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
             case 2:
               if(ki) {
                 if(repeat++ < 3) {
-                  action--;
+                  action--; action--;
                 } else {
                   repeat = 0;
                 }
