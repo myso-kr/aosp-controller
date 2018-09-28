@@ -79,7 +79,7 @@ export default async function ControllerNET(adb, serial) {
     // await adb.networkCellular(serial, { state: true });
     await ControllerDevice(adb, serial, rooted);
   })
-  .timeout(1000 * 60 * 5)
+  .timeout(1000 * 60 * 10)
   .catch((e) => console.error(`${serial} > ${e.message}`))
   .finally(() => adb.disconnect(serial))
 }

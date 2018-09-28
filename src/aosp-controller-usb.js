@@ -19,7 +19,7 @@ export default async function ControllerUSB(adb, serial) {
     await adb.networkCellular(serial, { state: true });
     await ControllerDevice(adb, serial, rooted);
   })
-  .timeout(1000 * 60 * 5)
+  .timeout(1000 * 60 * 10)
   .then(() => ControllerUSB(adb, serial))
   .catch((e) => console.error(`${serial} > ${e.message}`))
 }

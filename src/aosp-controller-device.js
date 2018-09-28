@@ -283,7 +283,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
     const TRENDS_TIMELINE_HOUR = _.nth(TRENDS_TIMELINE, moment().hours());
     console.info(`${serial} > Target Keyword Chance: ${TRENDS_TIMELINE_HOUR}%`);
 
-    const kc = _.random(2, 3);
+    const kc = _.random(3, 4);
     let ks = [];
     let KEYWORDS_PLATFORM = KEYWORDS_INTEREST;
     if(_.random(0, 100) < TRENDS_TIMELINE_HOUR) {
@@ -313,7 +313,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
     await chromeDeviceEmulation();
     await Page.navigate({url: 'http://m.naver.com'});
     await new Promise((resolve, reject) => {
-      let action = 0, repeat = 0;
+      let action = 0;
       Page.loadEventFired(async function loadEventFired() {
         try {
           await Promise.delay(_.random(3000, 15000));
@@ -327,23 +327,20 @@ export default async function ControllerDevice(adb, serial, rooted) {
               await chromeDeviceEmulationInput('#query, #nx_query', { text: `${k.keyword}\r\n` });
             break;
             case 1:
-              if(!ki) {
-                if(_.random(0, 100) < 50) {
-                  action++;
-                  return loadEventFired();
-                }
+              if(!ki && _.random(0, 100) < 50) {
+                action++;
+                return loadEventFired();
               }
               await chromeDeviceEmulationTouch('.total_wrap a[class*=tit], .total_wrap a [class*=tit]', { random: true });
             break;
             case 2:
-              if(ki) {
-                if(repeat++ < 3) {
-                  action--; action--;
-                } else {
-                  repeat = 0;
-                }
-              }
               await Promise.mapSeries(_.range(_.random(3, 10)), () => chromeDeviceEmulationSwipe({ direction: 'd' }));
+              if(ki) {
+                await Promise.mapSeries(_.range(_.random(20, 30)), () => {
+                  const direction = _.sample(['d', 'u']);
+                  return chromeDeviceEmulationSwipe({ direction });
+                });
+              }
               await chromeDeviceEmulationGoBack({ match: /^https?:\/\/m\.search\.naver\.com/g });
             break;
           }
