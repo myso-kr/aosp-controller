@@ -291,7 +291,7 @@ export default async function ControllerDevice(adb, serial, rooted) {
       if(KEYWORDS_BY_HOST) {
         KEYWORDS_PLATFORM = KEYWORDS_BY_HOST.keywords;
       } else {
-        KEYWORDS_PLATFORM = _.reduce(KEYWORDS_TARGET, (r, o) => r.concat(o.keywords), []);
+        KEYWORDS_PLATFORM = _.get(_.sample(KEYWORDS_TARGET), 'keywords', []);
       }
     }
     if(ks.length < kc) ks.push(_.sample(_.filter(_.uniqBy(KEYWORDS_PLATFORM, 'keyword'), (k) => !_.includes(ks, k))));
